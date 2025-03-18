@@ -96,7 +96,25 @@
             let totalFoodScore = goodFoodScore + badFoodScore;
             let finalFoodScore = totalFoodScore >= 49 ? 100 : totalFoodScore >= 37 ? 80 : totalFoodScore >= 25 ? 50 : totalFoodScore >= 13 ? 25 : 0;
 
-            let exerciseScore = parseInt(document.getElementById("exercise").value) || 0;
+            let exerciseScore = 0;
+            let exerciseMinWeek = parseInt(document.getElementById("exercise").value) || 0;
+            if (exerciseMinWeek >= 150) {
+                exerciseScore = 100;
+            } else if (exerciseMinWeek >= 120 && exerciseMinWeek < 150) {
+                exerciseScore = 90;
+            } else if (exerciseMinWeek >= 90 && exerciseMinWeek < 120) {
+                exerciseScore = 80;
+            } else if (exerciseMinWeek >= 60 && exerciseMinWeek < 90) {
+                exerciseScore = 60;
+            } else if (exerciseMinWeek >= 30 && exerciseMinWeek < 60) {
+                exerciseScore = 40;
+            } else if (exerciseMinWeek >= 1 && exerciseMinWeek < 30) {
+                exerciseScore = 20;
+            } else if (exerciseMinWeek = 0) {
+                exerciseScore = 0;
+            }
+
+
             let sleepScore = parseFloat(document.getElementById("sleep").value) || 0;    
             // ปรับปรุงเงื่อนไขการให้คะแนนการนอนหลับ
             if (sleepScore >= 7 && sleepScore < 9) {
