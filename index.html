@@ -218,7 +218,6 @@
                 cholesterolScore = Math.max(0, cholesterolScore - 20);
             }
 
-
             let glucose = parseInt(document.getElementById("glucose").value) || 0;
 
             let glucoseScore = 0;
@@ -226,6 +225,10 @@
                 glucoseScore = 100;
             } else if (cholesterol >= 100 && cholesterol < 126) {
                 glucoseScore = 60;
+            }
+
+            if (diabetes) {
+                glucoseScore = Math.max(0, 40);
             }
 
             let overallScore = finalFoodScore + exerciseScore + sleepScore + alcoholScore + smokingScore + negativeEmotionFinalScore + bmiScore + bpScore + cholesterolScore + glucoseScore;
@@ -311,6 +314,10 @@
                     <h4>น้ำตาลในเลือด</h4>
                     <label for="glucose">Fasting Plasma Glucose (mg/dL):</label>
                     <input type="number" id="glucose" min="0" class="form-control">
+                    <div class="form-check">
+                        <input type="checkbox" id="diabetes" class="form-check-input">
+                        <label class="form-check-label">เป็นโรคเบาหวานไหม</label>
+                    </div>
                 </div>
 
                 <div class="col-md-4">
