@@ -195,18 +195,21 @@
 
 
             let cholesterol = parseInt(document.getElementById("cholesterol").value) || 0;
+            let cholesterolHDL = parseInt(document.getElementById("cholesterolHDL").value) || 0;
+            let cholesterolNonHDL = 0
             let takingCholesterolmed = document.getElementById("cholesterolMedication").checked;
 
+            cholesterolNonHDL = cholesterol-cholesterolHDL;
             let cholesterolScore = 0;
-            if (cholesterol < 130) {
+            if (cholesterolNonHDL < 130) {
                 cholesterolScore = 100;
-            } else if (cholesterol >= 130 && cholesterol < 160) {
+            } else if (cholesterolNonHDL >= 130 && cholesterolNonHDL < 160) {
                 cholesterolScore = 60;
-            } else if (cholesterol >= 160 && cholesterol < 190) {
+            } else if (cholesterolNonHDL >= 160 && cholesterolNonHDL < 190) {
                 cholesterolScore = 40;
-            } else if (cholesterol >= 190 && cholesterol < 220) {
+            } else if (cholesterolNonHDL >= 190 && cholesterolNonHDL < 220) {
                 cholesterolScore = 20;
-            } else if (cholesterol >= 220) {
+            } else if (cholesterolNonHDL >= 220) {
                 cholesterolScore = 0;
             }
 
@@ -294,6 +297,8 @@
                     <h4>Cholesterol</h4>
                     <label for="cholesterol">Cholesterol (mg/dL):</label>
                     <input type="number" id="cholesterol" min="0" class="form-control">
+                    <label for="cholesterol">HDL-C:</label>
+                    <input type="number" id="cholesterolHDL" min="0" class="form-control">
                     <div class="form-check">
                         <input type="checkbox" id="cholesterolMedication" class="form-check-input">
                         <label class="form-check-label">กินยาลดไขมัน</label>
